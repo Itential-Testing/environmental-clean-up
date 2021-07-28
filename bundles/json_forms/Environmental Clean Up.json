@@ -1,0 +1,107 @@
+{
+  "id": "60fc4be0b67ecb354b2983e3",
+  "created": "2021-07-24T17:20:32.606Z",
+  "createdBy": "diptendu.maity@itential.com",
+  "lastUpdated": "2021-07-26T17:26:23.501Z",
+  "lastUpdatedBy": "diptendu.maity@itential.com",
+  "name": "Environmental Clean Up",
+  "description": "",
+  "struct": {
+    "type": "array",
+    "items": [
+      {
+        "nodeId": "f5048299-bbc6-4156-91d8-26fb0bf7bfbc",
+        "type": "string",
+        "title": "IAP Adapter",
+        "description": "The IAP adapter connected to the corresponding database of active jobs",
+        "placeholder": "Select an item",
+        "required": true,
+        "enum": [],
+        "binding": true,
+        "rel": "collection",
+        "targetPointer": "/enum",
+        "method": "GET",
+        "base": "/admin",
+        "href": "/services/health",
+        "sourceKeyPointer": "/id",
+        "transformation": "",
+        "sourcePointer": "/results"
+      },
+      {
+        "nodeId": "1908d38b-8512-44d3-87d8-30e87f162604",
+        "type": "string",
+        "title": "Workflow Name",
+        "description": "The workflow from which the active jobs will be retrieved from",
+        "placeholder": "Enter text",
+        "required": false,
+        "readOnly": false,
+        "binding": false,
+        "rel": "item",
+        "targetPointer": "/default"
+      }
+    ]
+  },
+  "schema": {
+    "title": "Environmental Clean Up",
+    "description": "",
+    "type": "object",
+    "required": [
+      "iapAdapter"
+    ],
+    "properties": {
+      "iapAdapter": {
+        "type": "string",
+        "title": "IAP Adapter",
+        "description": "The IAP adapter connected to the corresponding database of active jobs",
+        "enum": []
+      },
+      "workflowName": {
+        "type": "string",
+        "title": "Workflow Name",
+        "description": "The workflow from which the active jobs will be retrieved from"
+      }
+    }
+  },
+  "uiSchema": {
+    "iapAdapter": {
+      "ui:placeholder": "Select an item"
+    },
+    "workflowName": {
+      "ui:placeholder": "Enter text"
+    }
+  },
+  "bindingSchema": {
+    "properties": {
+      "iapAdapter": {
+        "binding:method": "GET",
+        "binding:link": {
+          "$ref": "/links",
+          "rel": "collection"
+        },
+        "binding:target": {
+          "propertyPointer": "/enum"
+        },
+        "binding:hyperSchema": {
+          "type": "object",
+          "base": "/admin",
+          "links": [
+            {
+              "rel": "collection",
+              "href": "/services/health",
+              "targetMediaType": "application/json",
+              "targetSchema": {
+                "$ref": "#"
+              }
+            }
+          ]
+        },
+        "binding:source": {
+          "propertyPointer": "/results",
+          "keyPointer": "/id"
+        }
+      }
+    }
+  },
+  "validationSchema": {},
+  "version": "2020.1"
+}
