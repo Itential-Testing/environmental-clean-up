@@ -1,0 +1,24 @@
+{
+  "_id": "60fef03f3d243ebe702c2024",
+  "name": "Environmental Clean Up",
+  "data": {
+    "description": "",
+    "workflowId": "Environmental Clean Up (2)",
+    "formId": "Environmental Clean Up",
+    "formData": {},
+    "gbac": {
+      "write": [],
+      "read": []
+    },
+    "lastUpdated": "2021-07-26T18:08:14.039Z",
+    "modifiedById": "60e8a2880996fb06fedf4f6c",
+    "modifiedByUsername": "diptendu.maity@itential.com"
+  },
+  "lastModifiedBy": "DSUP-20211:13541",
+  "lastRunAt": null,
+  "nextRunAt": null,
+  "priority": 0,
+  "repeatInterval": null,
+  "repeatTimezone": null,
+  "type": "normal"
+}
