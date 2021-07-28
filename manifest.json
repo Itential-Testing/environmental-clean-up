@@ -1,0 +1,53 @@
+{
+  "bundleName": "@itentialopensource/environmental-clean-up",
+  "version": "0.0.1",
+  "fingerprint": "6101919784a30c34de28e555",
+  "createdEpoch": "1627492759232",
+  "artifacts": [
+    {
+      "id": "Environmental Clean Up",
+      "name": "Environmental Clean Up",
+      "type": "ac-agenda-job",
+      "location": "/bundles/ac_agenda_jobs/Environmental Clean Up.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Environmental Clean Up (2)",
+      "name": "Environmental Clean Up (2)",
+      "type": "workflow",
+      "location": "/bundles/workflows/Environmental Clean Up (2).json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Environmental Clean Up",
+      "name": "Environmental Clean Up",
+      "type": "json-forms",
+      "location": "/bundles/json_forms/Environmental Clean Up.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "60fc599927d4743552bcf82a",
+      "name": "Environmental Clean Up Map",
+      "type": "transformation",
+      "location": "/bundles/transformations/Environmental Clean Up Map.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "60fc581a27d4743552bcf829",
+      "name": "Environmental Clean Up Query Form",
+      "type": "transformation",
+      "location": "/bundles/transformations/Environmental Clean Up Query Form.json",
+      "properties": {
+        "entryPoint": false
+      }
+    }
+  ]
+}
