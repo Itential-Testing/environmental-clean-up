@@ -1,0 +1,196 @@
+{
+  "_id": "60fc581a27d4743552bcf829",
+  "name": "Environmental Clean Up Query Form",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "formData",
+      "type": "object",
+      "properties": {
+        "iapAdapter": {
+          "type": "string",
+          "examples": [
+            "adapter-DBMongo"
+          ]
+        }
+      },
+      "required": []
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "adapterIAP",
+      "type": "string",
+      "examples": [
+        "iap-adapter"
+      ]
+    },
+    {
+      "$id": "options",
+      "type": "object",
+      "properties": {},
+      "required": []
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "type": "method",
+      "library": "Logical",
+      "method": "nullish",
+      "args": [
+        null,
+        " "
+      ],
+      "view": {
+        "row": 2,
+        "col": 2
+      }
+    },
+    {
+      "id": 3,
+      "type": "template",
+      "library": "String",
+      "method": "templateLiteral",
+      "template": "{\n  \"options\": {\n    \"filter\": {\n      \"name\": \"${workflowName}\"\n    },\n    \"page\": {\n      \"skip\": 0,\n      \"limit\": 500\n    }\n  }\n}",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 2,
+        "col": 3
+      }
+    },
+    {
+      "id": 4,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/iapAdapter"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "adapterIAP",
+        "ptr": ""
+      }
+    },
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 3,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 6,
+      "type": "method",
+      "library": "JSON",
+      "method": "parse",
+      "args": [
+        null,
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 3
+      }
+    },
+    {
+      "id": 7,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 6,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "options",
+        "ptr": ""
+      }
+    },
+    {
+      "id": 8,
+      "type": "assign",
+      "from": {
+        "location": "template",
+        "name": 3,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 6,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 9,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "workflowName"
+      ],
+      "view": {
+        "row": 2,
+        "col": 1
+      }
+    },
+    {
+      "id": 10,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 9,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 11,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 9,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/args/0/value"
+      }
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 3,
+    "row": 4
+  },
+  "created": "2021-07-26T17:26:23.412Z",
+  "createdBy": {
+    "_id": "60e8a2880996fb06fedf4f6c",
+    "provenance": "Itential-Okta",
+    "username": "diptendu.maity@itential.com"
+  },
+  "lastUpdated": "2021-07-26T17:26:23.412Z",
+  "lastUpdatedBy": {
+    "_id": "60e8a2880996fb06fedf4f6c",
+    "provenance": "Itential-Okta",
+    "username": "diptendu.maity@itential.com"
+  },
+  "version": "3.17.7-2021.1.0"
+}
