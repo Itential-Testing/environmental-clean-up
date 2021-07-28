@@ -1,0 +1,1305 @@
+{
+  "metadata": {
+    "name": "@itentialopensource/environmental-clean-up",
+    "version": "0.0.1",
+    "description": "Cancel all active jobs/Cancel all active jobs associated with a specific workflow",
+    "license": "Apache-2.0",
+    "repository": {
+      "type": "gitlab",
+      "hostname": "gitlab.com",
+      "path": "itentialopensource/pre-built-automations"
+    },
+    "keywords": [
+      "Itential",
+      "IAP",
+      "artifacts"
+    ],
+    "author": "Itential Automation Platform",
+    "IAPDependencies": {
+      "@itential/app-automation_catalog": "2.10.6",
+      "@itential/app-json_forms": "1.30.12",
+      "@itential/app-workflow_engine": "9.6.32"
+    }
+  },
+  "manifest": {
+    "bundleName": "@itentialopensource/environmental-clean-up",
+    "fingerprint": "6101919784a30c34de28e555",
+    "createdEpoch": "1627492759232",
+    "artifacts": [
+      {
+        "id": "Environmental Clean Up",
+        "name": "Environmental Clean Up",
+        "type": "ac-agenda-job",
+        "location": "/bundles/ac_agenda_jobs/Environmental Clean Up.json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "Environmental Clean Up (2)",
+        "name": "Environmental Clean Up (2)",
+        "type": "workflow",
+        "location": "/bundles/workflows/Environmental Clean Up (2).json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "Environmental Clean Up",
+        "name": "Environmental Clean Up",
+        "type": "json-forms",
+        "location": "/bundles/json_forms/Environmental Clean Up.json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "60fc599927d4743552bcf82a",
+        "name": "Environmental Clean Up Map",
+        "type": "transformation",
+        "location": "/bundles/transformations/Environmental Clean Up Map.json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "60fc581a27d4743552bcf829",
+        "name": "Environmental Clean Up Query Form",
+        "type": "transformation",
+        "location": "/bundles/transformations/Environmental Clean Up Query Form.json",
+        "properties": {
+          "entryPoint": false
+        }
+      }
+    ]
+  },
+  "bundles": [
+    {
+      "type": "ac-agenda-job",
+      "data": {
+        "_id": "60fef03f3d243ebe702c2024",
+        "name": "Environmental Clean Up",
+        "data": {
+          "description": "",
+          "workflowId": "Environmental Clean Up (2)",
+          "formId": "Environmental Clean Up",
+          "formData": {},
+          "gbac": {
+            "write": [],
+            "read": []
+          },
+          "lastUpdated": "2021-07-26T18:08:14.039Z",
+          "modifiedById": "60e8a2880996fb06fedf4f6c",
+          "modifiedByUsername": "diptendu.maity@itential.com"
+        },
+        "lastModifiedBy": "DSUP-20211:13541",
+        "lastRunAt": null,
+        "nextRunAt": null,
+        "priority": 0,
+        "repeatInterval": null,
+        "repeatTimezone": null,
+        "type": "normal"
+      }
+    },
+    {
+      "type": "workflow",
+      "data": {
+        "name": "Environmental Clean Up (2)",
+        "type": "automation",
+        "tasks": {
+          "512": {
+            "name": "transformation",
+            "canvasName": "transformation",
+            "summary": "Environmental Clean Up Map",
+            "description": "Perform a JSON Transformation using the JST library.",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "tr_id": "60fc599927d4743552bcf82a",
+                "variableMap": {
+                  "incomingJobs": "$var.39f4.result"
+                },
+                "options": {
+                  "extractOutput": false,
+                  "validateIncoming": true,
+                  "revertToDefaultValue": true
+                }
+              },
+              "outgoing": {
+                "outgoing": null
+              }
+            },
+            "deprecated": false,
+            "matched": [
+              {
+                "key": "description",
+                "highlightString": "Perform a JSON Transformation using the <span class='highlight-string'>JST</span> library."
+              }
+            ],
+            "groups": [],
+            "x": 0.5589818893783651,
+            "y": 0.49642857142857144,
+            "task_name": "Environmental Clean Up Map"
+          },
+          "6625": {
+            "name": "query",
+            "canvasName": "query",
+            "summary": "Query updated data array",
+            "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "pass_on_null": false,
+                "query": "outgoing",
+                "obj": "$var.512.outgoing"
+              },
+              "outgoing": {
+                "return_data": "$var.job.return_data"
+              },
+              "error": "",
+              "decorators": []
+            },
+            "deprecated": false,
+            "matched": [
+              {
+                "key": "canvasName",
+                "highlightString": "<span class='highlight-string'>query</span>"
+              },
+              {
+                "key": "summary",
+                "highlightString": "<span class='highlight-string'>Query</span> Data Using 'json-query' Format"
+              },
+              {
+                "key": "description",
+                "highlightString": "<span class='highlight-string'>Query</span> data using a dot/bracket notation string and a matching key/value pair."
+              }
+            ],
+            "groups": [],
+            "x": 0.6534508076358296,
+            "y": 0.4857142857142857,
+            "scheduled": false
+          },
+          "8106": {
+            "name": "query",
+            "canvasName": "query",
+            "summary": "Query data array",
+            "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "pass_on_null": false,
+                "query": "outgoing",
+                "obj": "$var.b5fb.outgoing"
+              },
+              "outgoing": {
+                "return_data": "$var.job.return_data"
+              },
+              "error": "",
+              "decorators": []
+            },
+            "deprecated": false,
+            "matched": [
+              {
+                "key": "canvasName",
+                "highlightString": "<span class='highlight-string'>query</span>"
+              },
+              {
+                "key": "summary",
+                "highlightString": "<span class='highlight-string'>Query</span> Data Using 'json-query' Format"
+              },
+              {
+                "key": "description",
+                "highlightString": "<span class='highlight-string'>Query</span> data using a dot/bracket notation string and a matching key/value pair."
+              }
+            ],
+            "groups": [],
+            "x": 0.245717082721488,
+            "y": 0.49047619047619045,
+            "scheduled": false
+          },
+          "workflow_start": {
+            "name": "workflow_start",
+            "groups": [],
+            "x": -0.219285364659814,
+            "y": 0.4880952380952381
+          },
+          "workflow_end": {
+            "name": "workflow_end",
+            "groups": [],
+            "x": 0.8923152227116985,
+            "y": 0.49523809523809526
+          },
+          "6f6": {
+            "name": "getWFJobList",
+            "canvasName": "getWFJobList",
+            "summary": "Get Jobs by Status",
+            "description": "Gets the list of jobs having a status matching the requested status category.",
+            "location": "Adapter",
+            "locationType": "Iap",
+            "app": "Iap",
+            "type": "automatic",
+            "displayName": "Iap",
+            "variables": {
+              "incoming": {
+                "status": "active",
+                "options": "$var.3b4d.options",
+                "adapter_id": "$var.3b4d.adapterIAP"
+              },
+              "outgoing": {
+                "result": null
+              },
+              "error": "",
+              "decorators": []
+            },
+            "deprecated": false,
+            "matched": [
+              {
+                "key": "canvasName",
+                "highlightString": "getWF<span class='highlight-string'>Job</span>List"
+              },
+              {
+                "key": "summary",
+                "highlightString": "Get <span class='highlight-string'>Job</span>s by Status"
+              },
+              {
+                "key": "description",
+                "highlightString": "Gets the list of <span class='highlight-string'>job</span>s having a status matching the requested status category."
+              }
+            ],
+            "groups": [],
+            "actor": "Pronghorn",
+            "x": 0.05775819872736172,
+            "y": 0.49404761904761907,
+            "scheduled": false
+          },
+          "b5fb": {
+            "name": "transformation",
+            "canvasName": "transformation",
+            "summary": "Environmental Clean Up Map",
+            "description": "Perform a JSON Transformation using the JST library.",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "tr_id": "60fc599927d4743552bcf82a",
+                "variableMap": {
+                  "incomingJobs": "$var.6f6.result"
+                },
+                "options": {
+                  "extractOutput": false,
+                  "validateIncoming": true,
+                  "revertToDefaultValue": true
+                }
+              },
+              "outgoing": {
+                "outgoing": null
+              },
+              "decorators": []
+            },
+            "deprecated": false,
+            "matched": [
+              {
+                "key": "description",
+                "highlightString": "Perform a JSON Transformation using the <span class='highlight-string'>JST</span> library."
+              }
+            ],
+            "groups": [],
+            "x": 0.16005873715124816,
+            "y": 0.49047619047619045,
+            "task_name": "Environmental Clean Up Map"
+          },
+          "d4ec": {
+            "name": "forEach",
+            "canvasName": "forEach",
+            "summary": "For Each Loop",
+            "description": "Iterate over each item in an array",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "data_array": "$var.8106.return_data"
+              },
+              "outgoing": {
+                "current_item": null
+              },
+              "error": "",
+              "decorators": []
+            },
+            "deprecated": false,
+            "matched": [
+              {
+                "key": "canvasName",
+                "highlightString": "<span class='highlight-string'>forEach</span>"
+              }
+            ],
+            "groups": [],
+            "x": 0.3271560940841055,
+            "y": 0.48546824542518835,
+            "scheduled": false
+          },
+          "39f4": {
+            "name": "getWFJobList",
+            "canvasName": "getWFJobList",
+            "summary": "Get Updated Jobs by Status",
+            "description": "Gets the list of jobs having a status matching the requested status category.",
+            "location": "Adapter",
+            "locationType": "Iap",
+            "app": "Iap",
+            "type": "automatic",
+            "displayName": "Iap",
+            "variables": {
+              "incoming": {
+                "status": "active",
+                "options": "$var.3b4d.options",
+                "adapter_id": "$var.3b4d.adapterIAP"
+              },
+              "outgoing": {
+                "result": null
+              },
+              "error": "",
+              "decorators": []
+            },
+            "deprecated": false,
+            "matched": [],
+            "groups": [],
+            "actor": "Pronghorn",
+            "x": 0.4434654919236417,
+            "y": 0.4880952380952381,
+            "scheduled": false
+          },
+          "e93c": {
+            "name": "evaluation",
+            "canvasName": "evaluation",
+            "summary": "Run Evaluation Task",
+            "description": "Run an evaluation",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "all_true_flag": false,
+                "evaluation_groups": [
+                  {
+                    "all_true_flag": false,
+                    "evaluations": [
+                      {
+                        "query": "",
+                        "operand_1": {
+                          "variable": "length",
+                          "task": "7bda"
+                        },
+                        "operator": "<=",
+                        "operand_2": {
+                          "variable": 1,
+                          "task": "static"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outgoing": {
+                "return_value": null
+              }
+            },
+            "deprecated": false,
+            "matched": [
+              {
+                "key": "canvasName",
+                "highlightString": "<span class='highlight-string'>eval</span>uation"
+              },
+              {
+                "key": "summary",
+                "highlightString": "Run <span class='highlight-string'>Eval</span>uation Task"
+              },
+              {
+                "key": "description",
+                "highlightString": "Run an <span class='highlight-string'>eval</span>uation"
+              }
+            ],
+            "groups": [],
+            "x": 0.8350465002447381,
+            "y": 0.4845238095238095
+          },
+          "3b4d": {
+            "name": "transformation",
+            "canvasName": "transformation",
+            "summary": "Environmental Clean Up Query Form",
+            "description": "Perform a JSON Transformation using the JST library.",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "tr_id": "60fc581a27d4743552bcf829",
+                "variableMap": {
+                  "formData": "$var.job.formData"
+                },
+                "options": {
+                  "extractOutput": false,
+                  "validateIncoming": true,
+                  "revertToDefaultValue": true
+                }
+              },
+              "outgoing": {
+                "adapterIAP": null,
+                "options": null
+              }
+            },
+            "deprecated": false,
+            "matched": [
+              {
+                "key": "description",
+                "highlightString": "Perform a JSON Transformation using the <span class='highlight-string'>JST</span> library."
+              }
+            ],
+            "groups": [],
+            "x": -0.08712677435144396,
+            "y": 0.4880952380952381,
+            "task_name": "Environmental Clean Up Query Form"
+          },
+          "7bda": {
+            "name": "arrayLength",
+            "canvasName": "length",
+            "summary": "Gets the length of an array.",
+            "description": "Returns the number of elements in that array. The value is an unsigned, 32-bit integer  that is always numerically greater than the highest index in the array.",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "automatic",
+            "displayName": "Array",
+            "variables": {
+              "incoming": {
+                "arr": "$var.6625.return_data"
+              },
+              "outgoing": {
+                "length": null
+              },
+              "error": "",
+              "decorators": []
+            },
+            "deprecated": false,
+            "matched": [],
+            "groups": [],
+            "actor": "Pronghorn",
+            "x": 0.7444933920704846,
+            "y": 0.48333333333333334,
+            "scheduled": false
+          },
+          "a1c3": {
+            "name": "evaluation",
+            "canvasName": "evaluation",
+            "summary": "Run Evaluation Task",
+            "description": "Run an evaluation",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "all_true_flag": false,
+                "evaluation_groups": [
+                  {
+                    "all_true_flag": false,
+                    "evaluations": [
+                      {
+                        "query": "",
+                        "operand_1": {
+                          "variable": "current_item",
+                          "task": "d4ec"
+                        },
+                        "operator": "!=",
+                        "operand_2": {
+                          "variable": "_id",
+                          "task": "job"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outgoing": {
+                "return_value": null
+              }
+            },
+            "deprecated": false,
+            "matched": [
+              {
+                "key": "canvasName",
+                "highlightString": "<span class='highlight-string'>eval</span>uation"
+              },
+              {
+                "key": "summary",
+                "highlightString": "Run <span class='highlight-string'>Eval</span>uation Task"
+              },
+              {
+                "key": "description",
+                "highlightString": "Run an <span class='highlight-string'>eval</span>uation"
+              }
+            ],
+            "groups": [],
+            "x": 0.32843857072931965,
+            "y": 0.34523809523809523
+          },
+          "ba82": {
+            "name": "cancelWFJob",
+            "canvasName": "cancelWFJob",
+            "summary": "Cancel a job",
+            "description": "Cancel an active job (set the state of the job to cancelled)",
+            "location": "Adapter",
+            "locationType": "Iap",
+            "app": "Iap",
+            "type": "automatic",
+            "displayName": "Iap",
+            "variables": {
+              "incoming": {
+                "jobId": "$var.d4ec.current_item",
+                "adapter_id": "$var.3b4d.adapterIAP"
+              },
+              "outgoing": {
+                "result": null
+              },
+              "error": "",
+              "decorators": []
+            },
+            "deprecated": false,
+            "matched": [
+              {
+                "key": "canvasName",
+                "highlightString": "<span class='highlight-string'>cancel</span>WFJob"
+              },
+              {
+                "key": "summary",
+                "highlightString": "<span class='highlight-string'>Cancel</span> a job"
+              },
+              {
+                "key": "description",
+                "highlightString": "<span class='highlight-string'>Cancel</span> an active job (set the state of the job to cancelled)"
+              }
+            ],
+            "groups": [],
+            "actor": "Pronghorn",
+            "x": 0.3269701419481155,
+            "y": 0.2226190476190476,
+            "scheduled": false
+          }
+        },
+        "transitions": {
+          "512": {
+            "6625": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "6625": {
+            "7bda": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "8106": {
+            "d4ec": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "workflow_start": {
+            "3b4d": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "workflow_end": {},
+          "6f6": {
+            "b5fb": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "6c6c": {},
+          "b5fb": {
+            "8106": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "d4ec": {
+            "a1c3": {
+              "type": "standard",
+              "state": "loop"
+            },
+            "39f4": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "6ad": {},
+          "b840": {},
+          "970e": {},
+          "39f4": {
+            "512": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "e93c": {
+            "workflow_end": {
+              "type": "standard",
+              "state": "success"
+            },
+            "6f6": {
+              "type": "revert",
+              "state": "failure"
+            }
+          },
+          "3b4d": {
+            "6f6": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "abae": {},
+          "a1d2": {},
+          "7bda": {
+            "e93c": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "a1c3": {
+            "ba82": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "ba82": {},
+          "9d45": {}
+        },
+        "font_size": 12,
+        "last_updated": "2021-07-26T17:26:23.067Z",
+        "last_updated_by": {
+          "provenance": "Itential-Okta",
+          "username": "diptendu.maity@itential.com",
+          "firstname": "Diptendu",
+          "inactive": false
+        },
+        "lastUpdatedVersion": "5.40.5-2021.1.8.0",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "formData": {
+              "$id": "formData",
+              "type": "object",
+              "properties": {
+                "iapAdapter": {
+                  "type": "string",
+                  "examples": [
+                    "adapter-DBMongo"
+                  ]
+                }
+              },
+              "required": []
+            },
+            "_id": {
+              "type": [
+                "array",
+                "boolean",
+                "null",
+                "number",
+                "object",
+                "string"
+              ]
+            }
+          },
+          "required": [
+            "formData",
+            "_id"
+          ]
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "formData": {
+              "$id": "formData",
+              "type": "object",
+              "properties": {
+                "iapAdapter": {
+                  "type": "string",
+                  "examples": [
+                    "adapter-DBMongo"
+                  ]
+                }
+              },
+              "required": []
+            },
+            "_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{24}$"
+            },
+            "initiator": {
+              "type": "string"
+            },
+            "return_data": {
+              "type": [
+                "string",
+                "number",
+                "object",
+                "integer",
+                "array",
+                "boolean",
+                "null"
+              ],
+              "examples": [
+                "value"
+              ]
+            }
+          }
+        },
+        "created": "2021-07-24T15:58:28.615Z",
+        "created_by": {
+          "provenance": "Itential-Okta",
+          "username": "chase.lee@itential.com",
+          "firstname": "Chase",
+          "inactive": false
+        },
+        "createdVersion": "5.40.5-2021.1.8.0",
+        "tags": [],
+        "groups": []
+      }
+    },
+    {
+      "type": "json-forms",
+      "data": {
+        "id": "60fc4be0b67ecb354b2983e3",
+        "created": "2021-07-24T17:20:32.606Z",
+        "createdBy": "diptendu.maity@itential.com",
+        "lastUpdated": "2021-07-26T17:26:23.501Z",
+        "lastUpdatedBy": "diptendu.maity@itential.com",
+        "name": "Environmental Clean Up",
+        "description": "",
+        "struct": {
+          "type": "array",
+          "items": [
+            {
+              "nodeId": "f5048299-bbc6-4156-91d8-26fb0bf7bfbc",
+              "type": "string",
+              "title": "IAP Adapter",
+              "description": "The IAP adapter connected to the corresponding database of active jobs",
+              "placeholder": "Select an item",
+              "required": true,
+              "enum": [],
+              "binding": true,
+              "rel": "collection",
+              "targetPointer": "/enum",
+              "method": "GET",
+              "base": "/admin",
+              "href": "/services/health",
+              "sourceKeyPointer": "/id",
+              "transformation": "",
+              "sourcePointer": "/results"
+            },
+            {
+              "nodeId": "1908d38b-8512-44d3-87d8-30e87f162604",
+              "type": "string",
+              "title": "Workflow Name",
+              "description": "The workflow from which the active jobs will be retrieved from",
+              "placeholder": "Enter text",
+              "required": false,
+              "readOnly": false,
+              "binding": false,
+              "rel": "item",
+              "targetPointer": "/default"
+            }
+          ]
+        },
+        "schema": {
+          "title": "Environmental Clean Up",
+          "description": "",
+          "type": "object",
+          "required": [
+            "iapAdapter"
+          ],
+          "properties": {
+            "iapAdapter": {
+              "type": "string",
+              "title": "IAP Adapter",
+              "description": "The IAP adapter connected to the corresponding database of active jobs",
+              "enum": []
+            },
+            "workflowName": {
+              "type": "string",
+              "title": "Workflow Name",
+              "description": "The workflow from which the active jobs will be retrieved from"
+            }
+          }
+        },
+        "uiSchema": {
+          "iapAdapter": {
+            "ui:placeholder": "Select an item"
+          },
+          "workflowName": {
+            "ui:placeholder": "Enter text"
+          }
+        },
+        "bindingSchema": {
+          "properties": {
+            "iapAdapter": {
+              "binding:method": "GET",
+              "binding:link": {
+                "$ref": "/links",
+                "rel": "collection"
+              },
+              "binding:target": {
+                "propertyPointer": "/enum"
+              },
+              "binding:hyperSchema": {
+                "type": "object",
+                "base": "/admin",
+                "links": [
+                  {
+                    "rel": "collection",
+                    "href": "/services/health",
+                    "targetMediaType": "application/json",
+                    "targetSchema": {
+                      "$ref": "#"
+                    }
+                  }
+                ]
+              },
+              "binding:source": {
+                "propertyPointer": "/results",
+                "keyPointer": "/id"
+              }
+            }
+          }
+        },
+        "validationSchema": {},
+        "version": "2020.1"
+      }
+    },
+    {
+      "type": "transformation",
+      "data": {
+        "_id": "60fc599927d4743552bcf82a",
+        "name": "Environmental Clean Up Map",
+        "description": "",
+        "incoming": [
+          {
+            "$id": "incomingJobs",
+            "type": "object",
+            "properties": {
+              "response": {
+                "type": "object",
+                "properties": {
+                  "results": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string",
+                          "examples": [
+                            "60df6a05ce"
+                          ]
+                        }
+                      },
+                      "required": []
+                    }
+                  }
+                },
+                "required": []
+              }
+            },
+            "required": []
+          }
+        ],
+        "outgoing": [
+          {
+            "$id": "outgoing",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "examples": [
+                "60a9c997d6e5f64"
+              ]
+            }
+          }
+        ],
+        "steps": [
+          {
+            "id": 1,
+            "type": "method",
+            "library": "Array",
+            "method": "map",
+            "args": [
+              null,
+              "ƒ_map_1"
+            ],
+            "view": {
+              "row": 1,
+              "col": 1
+            }
+          },
+          {
+            "id": 2,
+            "type": "assign",
+            "from": {
+              "location": "incoming",
+              "name": "incomingJobs",
+              "ptr": "/response/results"
+            },
+            "to": {
+              "location": "method",
+              "name": 1,
+              "ptr": "/args/0/value"
+            }
+          },
+          {
+            "id": 3,
+            "type": "assign",
+            "from": {
+              "location": "method",
+              "name": 1,
+              "ptr": "/return"
+            },
+            "to": {
+              "location": "outgoing",
+              "name": "outgoing",
+              "ptr": ""
+            }
+          }
+        ],
+        "functions": [
+          {
+            "incoming": [
+              {
+                "type": "object",
+                "properties": {
+                  "_id": {
+                    "type": "string",
+                    "examples": [
+                      "60df6a05ce"
+                    ]
+                  }
+                },
+                "required": [],
+                "$id": "currentValue"
+              },
+              {
+                "title": "index",
+                "type": "number",
+                "optional": true,
+                "$id": "index"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "examples": [
+                        "60df6a05ce"
+                      ]
+                    }
+                  },
+                  "required": []
+                },
+                "$id": "array",
+                "optional": true
+              },
+              {
+                "$id": "thisArg",
+                "type": "object",
+                "properties": {},
+                "isContext": true,
+                "isThis": true
+              }
+            ],
+            "outgoing": [
+              {
+                "title": "newValue",
+                "type": [
+                  "array",
+                  "boolean",
+                  "number",
+                  "integer",
+                  "string",
+                  "object",
+                  "null"
+                ],
+                "editable": true,
+                "$id": "newValue"
+              }
+            ],
+            "functions": [],
+            "name": "ƒ_map_1",
+            "steps": [
+              {
+                "id": 1,
+                "type": "assign",
+                "from": {
+                  "location": "incoming",
+                  "name": "currentValue",
+                  "ptr": "/_id"
+                },
+                "to": {
+                  "location": "outgoing",
+                  "name": "newValue",
+                  "ptr": ""
+                }
+              }
+            ],
+            "view": {
+              "col": 0,
+              "row": 4
+            },
+            "id": "ƒ_map_1",
+            "comments": []
+          }
+        ],
+        "comments": [],
+        "view": {
+          "col": 1,
+          "row": 5
+        },
+        "created": "2021-07-26T17:26:23.326Z",
+        "createdBy": {
+          "_id": "60e8a2880996fb06fedf4f6c",
+          "provenance": "Itential-Okta",
+          "username": "diptendu.maity@itential.com"
+        },
+        "lastUpdated": "2021-07-26T17:26:23.326Z",
+        "lastUpdatedBy": {
+          "_id": "60e8a2880996fb06fedf4f6c",
+          "provenance": "Itential-Okta",
+          "username": "diptendu.maity@itential.com"
+        },
+        "version": "3.17.7-2021.1.0"
+      }
+    },
+    {
+      "type": "transformation",
+      "data": {
+        "_id": "60fc581a27d4743552bcf829",
+        "name": "Environmental Clean Up Query Form",
+        "description": "",
+        "incoming": [
+          {
+            "$id": "formData",
+            "type": "object",
+            "properties": {
+              "iapAdapter": {
+                "type": "string",
+                "examples": [
+                  "adapter-DBMongo"
+                ]
+              }
+            },
+            "required": []
+          }
+        ],
+        "outgoing": [
+          {
+            "$id": "adapterIAP",
+            "type": "string",
+            "examples": [
+              "iap-adapter"
+            ]
+          },
+          {
+            "$id": "options",
+            "type": "object",
+            "properties": {},
+            "required": []
+          }
+        ],
+        "steps": [
+          {
+            "id": 1,
+            "type": "method",
+            "library": "Logical",
+            "method": "nullish",
+            "args": [
+              null,
+              " "
+            ],
+            "view": {
+              "row": 2,
+              "col": 2
+            }
+          },
+          {
+            "id": 3,
+            "type": "template",
+            "library": "String",
+            "method": "templateLiteral",
+            "template": "{\n  \"options\": {\n    \"filter\": {\n      \"name\": \"${workflowName}\"\n    },\n    \"page\": {\n      \"skip\": 0,\n      \"limit\": 500\n    }\n  }\n}",
+            "args": [
+              null
+            ],
+            "view": {
+              "row": 2,
+              "col": 3
+            }
+          },
+          {
+            "id": 4,
+            "type": "assign",
+            "from": {
+              "location": "incoming",
+              "name": "formData",
+              "ptr": "/iapAdapter"
+            },
+            "to": {
+              "location": "outgoing",
+              "name": "adapterIAP",
+              "ptr": ""
+            }
+          },
+          {
+            "id": 5,
+            "type": "assign",
+            "from": {
+              "location": "method",
+              "name": 1,
+              "ptr": "/return"
+            },
+            "to": {
+              "location": "template",
+              "name": 3,
+              "ptr": "/args/0/value"
+            }
+          },
+          {
+            "id": 6,
+            "type": "method",
+            "library": "JSON",
+            "method": "parse",
+            "args": [
+              null,
+              null
+            ],
+            "view": {
+              "row": 1,
+              "col": 3
+            }
+          },
+          {
+            "id": 7,
+            "type": "assign",
+            "from": {
+              "location": "method",
+              "name": 6,
+              "ptr": "/return"
+            },
+            "to": {
+              "location": "outgoing",
+              "name": "options",
+              "ptr": ""
+            }
+          },
+          {
+            "id": 8,
+            "type": "assign",
+            "from": {
+              "location": "template",
+              "name": 3,
+              "ptr": "/return"
+            },
+            "to": {
+              "location": "method",
+              "name": 6,
+              "ptr": "/args/0/value"
+            }
+          },
+          {
+            "id": 9,
+            "type": "method",
+            "library": "Object",
+            "method": "getProperty",
+            "args": [
+              null,
+              "workflowName"
+            ],
+            "view": {
+              "row": 2,
+              "col": 1
+            }
+          },
+          {
+            "id": 10,
+            "type": "assign",
+            "from": {
+              "location": "incoming",
+              "name": "formData",
+              "ptr": ""
+            },
+            "to": {
+              "location": "method",
+              "name": 9,
+              "ptr": "/args/0/value"
+            }
+          },
+          {
+            "id": 11,
+            "type": "assign",
+            "from": {
+              "location": "method",
+              "name": 9,
+              "ptr": "/return"
+            },
+            "to": {
+              "location": "method",
+              "name": 1,
+              "ptr": "/args/0/value"
+            }
+          }
+        ],
+        "functions": [],
+        "comments": [],
+        "view": {
+          "col": 3,
+          "row": 4
+        },
+        "created": "2021-07-26T17:26:23.412Z",
+        "createdBy": {
+          "_id": "60e8a2880996fb06fedf4f6c",
+          "provenance": "Itential-Okta",
+          "username": "diptendu.maity@itential.com"
+        },
+        "lastUpdated": "2021-07-26T17:26:23.412Z",
+        "lastUpdatedBy": {
+          "_id": "60e8a2880996fb06fedf4f6c",
+          "provenance": "Itential-Okta",
+          "username": "diptendu.maity@itential.com"
+        },
+        "version": "3.17.7-2021.1.0"
+      }
+    }
+  ],
+  "readme": "<!-- This is a comment in md (Markdown) format, it will not be visible to the end user -->\n\n<!-- Update the below line with your Pre-Built name -->\n# Pre-Built Name\n\n<!-- Leave TOC intact unless you've added or removed headers -->\n## Table of Contents\n\n* [Overview](#overview)\n* [Installation Prerequisites](#installation-prerequisites)\n* [Requirements](#requirements)\n* [Features](#features)\n* [Future Enhancements](#future-enhancements)\n* [How to Install](#how-to-install)\n* [How to Run](#how-to-run)\n* [Additional Information](#additional-information)\n\n## Overview\n\n<!-- Write a few sentences about the Pre-Built and explain the use case(s) -->\n<!-- Avoid using the word Artifact. Please use Pre-Built, Pre-Built Transformation or Pre-Built Automation -->\n<!-- Ex.: The Migration Wizard enables IAP users to conveniently move their automation use cases between different IAP environments -->\n<!-- (e.g. from Dev to Pre-Production or from Lab to Production). -->\n\n<!-- Workflow(s) Image Placeholder - TO BE ADDED DIRECTLY TO GitLab -->\n<!-- REPLACE COMMENT BELOW WITH IMAGE OF YOUR MAIN WORKFLOW -->\n<!--\n<table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/staging/environmental-clean-up/-/raw/master/images/workflow.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n-->\n<!-- REPLACE COMMENT ABOVE WITH IMAGE OF YOUR MAIN WORKFLOW -->\n\n<!-- ADD ESTIMATED RUN TIME HERE -->\n<!-- e.g. Estimated Run Time: 34 min. -->\n_Estimated Run Time_:\n\n## Installation Prerequisites\n\nUsers must satisfy the following pre-requisites:\n\n<!-- Include any other required apps or adapters in this list -->\n<!-- Ex.: EC2 Adapter -->\n* Itential Automation Platform\n  * `^2021.1`\n\n## Requirements\n\nThis Pre-Built requires the following:\n\n<!-- Unordered list highlighting the requirements of the Pre-Built -->\n<!-- EXAMPLE -->\n<!-- * cisco ios device -->\n<!-- * Ansible or NSO (with F5 NED) * -->\n\n## Features\n\nThe main benefits and features of the Pre-Built are outlined below.\n\n<!-- Unordered list highlighting the most exciting features of the Pre-Built -->\n<!-- EXAMPLE -->\n<!-- * Automatically checks for device type -->\n<!-- * Displays dry-run to user (asking for confirmation) prior to pushing config to the device -->\n<!-- * Verifies downloaded file integrity (using md5), will try to download again if failed -->\n\n\n## Future Enhancements\n\n<!-- OPTIONAL - Mention if the Pre-Built will be enhanced with additional features on the road map -->\n<!-- Ex.: This Pre-Built would support Cisco XR and F5 devices -->\n\n## How to Install\n\nTo install the Pre-Built:\n\n* Verify you are running a supported version of the Itential Automation Platform (IAP) as listed above in the [Requirements](#requirements) section in order to install the Pre-Built. \n* The Pre-Built can be installed from within App-Admin_Essential. Simply search for the name of your desired Pre-Built and click the install button (as shown below).\n\n<!-- REPLACE BELOW WITH IMAGE OF YOUR PUBLISHED PRE-BUILT -->\n<!--\n<table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/staging/environmental-clean-up/-/raw/master/images/install.png\" alt=\"install\" width=\"600px\">\n</td></tr></table>\n-->\n<!-- REPLACE ABOVE WITH IMAGE OF YOUR PUBLISHED PRE-BUILT -->\n\n<!-- OPTIONAL - Explain if external components are required outside of IAP -->\n<!-- Ex.: The Ansible roles required for this Pre-Built can be found in the repository located at https://gitlab.com/itentialopensource/pre-built-automations/hello-world -->\n\n## How to Run\n\nUse the following to run the Pre-Built:\n\n<!-- Explain the main entrypoint(s) for this Pre-Built: Automation Catalog item, Workflow, Postman, etc. -->\n\n## Additional Information\n\nPlease use your Itential Customer Success account if you need support when using this Pre-Built.\n"
+}
